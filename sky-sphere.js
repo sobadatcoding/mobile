@@ -5675,11 +5675,11 @@ SkySphere = function (constellations) {
     var zoomOutButton = document.getElementById('zoom-out');
 
     zoomInButton.addEventListener('click', function () {
-        self.zoom(1.1); // Adjust the zoom factor as needed
+        self.zoom(1.25); // Adjust the zoom factor as needed
     });
 
     zoomOutButton.addEventListener('click', function () {
-        self.zoom(0.9); // Adjust the zoom factor as needed
+        self.zoom(0.75); // Adjust the zoom factor as needed
     });
   };
   SkySphere.prototype.setRadius = function (radius) {
