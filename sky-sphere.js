@@ -5761,7 +5761,7 @@ SkySphere = function (constellations) {
         }
     } 
 
-    context.font = this.options.font || '13px Helvetica';
+    context.font = this.options.font || '16px Arial';
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     context.fillStyle = '#ffffff';
@@ -5770,11 +5770,10 @@ SkySphere = function (constellations) {
         if (skyPoint.z >= 0 && skyPoint.data && skyPoint.data.name) {
             context.save();
             context.translate(Math.floor(skyPoint.x), Math.floor(skyPoint.y));
-            context.scale(1, -1); // Flip the text vertically
             context.fillText(skyPoint.data.name, 0, 0);
             context.restore();
-        }
-    }
+        } 
+    }   
 
     if (this.overObjectIndex !== null) {
         var highlightSize = this.options.highlightSize || 3;
