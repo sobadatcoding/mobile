@@ -5761,7 +5761,7 @@ SkySphere = function (constellations) {
         }
     } 
 
-    context.font = this.options.font || '18px Helvetica';
+    context.font = this.options.font || '25px Helvetica';
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     context.fillStyle = '#ffffff';
