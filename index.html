@@ -10,36 +10,45 @@
             height: 100%;
             width: 100%;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
+        
+        #sky-container {
+            position: relative;
         }
         
         /* CSS for zoom buttons */
         .zoom-buttons {
             position: absolute;
-            bottom: 20px;
+            bottom: -60px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 20px;
         }
         
         .zoom-buttons button {
-            font-size: 24px;
-            padding: 10px 20px;
-            margin: 0 10px;
-            border-radius: 5px;
-            background-color: #ffffff;
-            color: #000000;
+            font-size: 32px;
+            padding: 15px 30px;
+            margin: 0 20px;
+            border-radius: 10px;
+            background-color: #000000;
+            color: #ffffff;
             border: none;
             cursor: pointer;
         }
     </style>
 </head>
 <body>
+<div id="sky-container">
+    <canvas id="sky"></canvas>
+    <div class="zoom-buttons">
+        <button id="zoom-in">+</button>
+        <button id="zoom-out">-</button>
+    </div>
+</div>
 <canvas id="sky"></canvas>
 <div class="zoom-buttons">
     <button id="zoom-in">+</button>
