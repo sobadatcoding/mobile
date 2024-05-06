@@ -14,41 +14,22 @@
             align-items: center;
         }
         
-        #sky-container {
-            position: relative;
-        }
-        
         /* CSS for zoom buttons */
         .zoom-buttons {
             position: absolute;
-            bottom: -60px;
+            bottom: 80px;
             left: 50%;
             transform: translateX(-50%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         
         .zoom-buttons button {
-            font-size: 32px;
-            padding: 15px 30px;
+            font-size: 36px;
+            padding: 20px 40px;
             margin: 0 20px;
-            border-radius: 10px;
-            background-color: #000000;
-            color: #ffffff;
-            border: none;
-            cursor: pointer;
         }
     </style>
 </head>
 <body>
-<div id="sky-container">
-    <canvas id="sky"></canvas>
-    <div class="zoom-buttons">
-        <button id="zoom-in">+</button>
-        <button id="zoom-out">-</button>
-    </div>
-</div>
 <canvas id="sky"></canvas>
 <div class="zoom-buttons">
     <button id="zoom-in">+</button>
@@ -57,8 +38,8 @@
 <script src="sky-sphere.js"></script>
 <script>
     var sky = new SkySphere('sky', {
-        width: 1000,
-        height: 1000,
+        width: 700,
+        height: 700,
         customOnClick: function(data) {
             // Define your custom action for added objects.
         }
