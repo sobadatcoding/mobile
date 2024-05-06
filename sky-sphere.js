@@ -5761,19 +5761,17 @@ SkySphere = function (constellations) {
         }
     } 
 
-    context.font = this.options.font || '20px Helvetica';
+    // Draw constellation labels
+    context.font = this.options.font || '13px Times';
     context.textAlign = 'center';
     context.textBaseline = 'middle';
-    context.fillStyle = '#ffffff';
     for (i = 0; i < this.constellationLabels.length; i++) {
         skyPoint = this.constellationLabels[i];
         if (skyPoint.z >= 0 && skyPoint.data && skyPoint.data.name) {
-            context.save();
-            context.translate(Math.floor(skyPoint.x), Math.floor(skyPoint.y));
-            context.fillText(skyPoint.data.name, 0, 0);
-            context.restore();
-        } 
-    }   
+            context.fillStyle = skyPoint.data.color || '#ffffff';
+            context.fillText(skyPoint.data.name, Math.floor(skyPoint.x), Math.floor(skyPoint.y));
+        }
+    }
 
     if (this.overObjectIndex !== null) {
         var highlightSize = this.options.highlightSize || 3;
@@ -5787,7 +5785,7 @@ SkySphere = function (constellations) {
         context.stroke();
         // Draw text beside highlighted object
         if (this.options.getObjectText) {
-            context.font = this.options.font || '15px serif';
+            context.font = this.options.font || '15px Verdana';
             var text = this.options.getObjectText(skyPoint.data);
             var textX = skyPoint.x + radius + highlightSize;
             var textY = skyPoint.y - radius - highlightSize;
