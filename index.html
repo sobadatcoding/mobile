@@ -9,23 +9,33 @@
             padding: 0;
             height: 100%;
             width: 100%;
-            display: flex;           /* Use flexbox for layout */
-            justify-content: center; /* Center horizontally */
-            align-items: center;    /* Center vertically */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-
+        
         /* CSS for zoom buttons */
         .zoom-buttons {
             position: absolute;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
         }
-
+        
         .zoom-buttons button {
             font-size: 24px;
             padding: 10px 20px;
             margin: 0 10px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -38,8 +48,8 @@
 <script src="sky-sphere.js"></script>
 <script>
     var sky = new SkySphere('sky', {
-        width: 700,
-        height: 700,
+        width: 1000,
+        height: 1000,
         customOnClick: function(data) {
             // Define your custom action for added objects.
         }
