@@ -5681,6 +5681,19 @@ SkySphere = function (constellations) {
     zoomOutButton.addEventListener('click', function () {
         self.zoom(0.75); // Adjust the zoom factor as needed
     });
+
+    var rotateLeftButton = document.getElementById('rotate-left');
+    var rotateRightButton = document.getElementById('rotate-right');
+
+    rotateLeftButton.addEventListener('click', function() {
+        self.rotateZ(-Math.PI / 16); // Rotate left by 11.25 degrees (adjust as needed)
+        self.drawSky();
+    });
+
+rotateRightButton.addEventListener('click', function() {
+    self.rotateZ(Math.PI / 16); // Rotate right by 11.25 degrees (adjust as needed)
+    self.drawSky();
+});
   };
   SkySphere.prototype.setRadius = function (radius) {
     this.zoom(radius / this.radius);
@@ -5841,6 +5854,21 @@ SkySphere = function (constellations) {
       skyPoint.x = x * cosdx + z * sindx + centerX;
       skyPoint.y = sindy * k - y * cosdy + centerY;
       skyPoint.z = y * sindy + cosdy * k;
+    });
+  };
+  SkySphere.prototype.rotateZ = function(angle) {
+    var centerX = this.containerWidth / 2;
+    var centerY = this.containerHeight / 2;
+    var cos = Math.cos(angle);
+    var sin = Math.sin(angle);
+
+    this.applyTransform(function(skyPoint) {
+        var x = skyPoint.x - centerX;
+        var y = skyPoint.y - centerY;
+        var rotatedX = x * cos - y * sin;
+        var rotatedY = x * sin + y * cos;
+        skyPoint.x = rotatedX + centerX;
+        skyPoint.y = rotatedY + centerY;
     });
   };
   SkySphere.prototype._currentAnimationTimeout = null;
