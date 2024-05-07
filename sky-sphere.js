@@ -5694,33 +5694,44 @@ SkySphere = function (constellations) {
         self.rotateZ(Math.PI / 16); // Rotate right by 11.25 degrees (adjust as needed)
         self.drawSky();
     });
-    // Prevent zooming on double-tap and pinch-zoom
+    // Prevent zooming on double-tap and pinch-zoom, but allow fast clicks on buttons
     var lastTouchEnd = 0;
+
     document.addEventListener('touchstart', function(event) {
-        if (event.touches.length > 1) {
+        if (event.touches.length > 1 && !isButton(event.target)) {
             event.preventDefault();
         }
     }, { passive: false });
 
     document.addEventListener('touchend', function(event) {
         var now = new Date().getTime();
-        if (now - lastTouchEnd <= 300) {
+        if (now - lastTouchEnd <= 300 && !isButton(event.target)) {
             event.preventDefault();
-    }
-    lastTouchEnd = now;
+        }
+        lastTouchEnd = now;
     }, { passive: false });
 
     document.addEventListener('gesturestart', function(event) {
-        event.preventDefault();
+        if (!isButton(event.target)) {
+            event.preventDefault();
+        }
     });
 
     document.addEventListener('gesturechange', function(event) {
-        event.preventDefault();
+        if (!isButton(event.target)) {
+            event.preventDefault();
+        }
     });
 
     document.addEventListener('gestureend', function(event) {
-        event.preventDefault();
+        if (!isButton(event.target)) {
+            event.preventDefault();
+        }
     });
+
+    function isButton(element) {
+        return element.tagName === 'BUTTON';
+    }
   };
   SkySphere.prototype.setRadius = function (radius) {
     this.zoom(radius / this.radius);
