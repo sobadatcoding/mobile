@@ -32,13 +32,6 @@
             cursor: pointer;
             transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            outline: none;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
         }
 
         .zoom-buttons button:active {
@@ -51,8 +44,8 @@
 <body>
 <canvas id="sky"></canvas>
 <div class="zoom-buttons">
-    <button id="zoom-in">+</button>
-    <button id="zoom-out">-</button>
+    <button id="zoom-in">⊕</button>
+    <button id="zoom-out">⊖</button>
 </div>
 <script src="sky-sphere.js"></script>
 <script>
@@ -158,17 +151,6 @@
     skySphere.generateConstellationLabel('Vulpecula', 19, 45, 41.4, 26, 19, 9.1);
 
     sky.drawSky();
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var zoomButtons = document.querySelectorAll('.zoom-buttons button');
-        
-        zoomButtons.forEach(function(button) {
-            button.addEventListener('touchstart', function(event) {
-                event.preventDefault();
-            }, false);
-        });
-    });
 </script>
 </body>
 </html>
