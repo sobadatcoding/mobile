@@ -5762,7 +5762,7 @@ SkySphere = function (constellations) {
     } 
 
     // Draw constellation labels
-    context.font = this.options.font || '20px Verdana';
+    context.font = this.options.font || '20px Sans-Serif';
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     for (i = 0; i < this.constellationLabels.length; i++) {
@@ -5785,7 +5785,7 @@ SkySphere = function (constellations) {
         context.stroke();
         // Draw text beside highlighted object
         if (this.options.getObjectText) {
-            context.font = this.options.font || '15px Verdana';
+            context.font = this.options.font || '15px Sans-Serif';
             var text = this.options.getObjectText(skyPoint.data);
             var textX = skyPoint.x + radius + highlightSize;
             var textY = skyPoint.y - radius - highlightSize;
