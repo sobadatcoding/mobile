@@ -5694,6 +5694,33 @@ SkySphere = function (constellations) {
         self.rotateZ(Math.PI / 16); // Rotate right by 11.25 degrees (adjust as needed)
         self.drawSky();
     });
+    // Prevent zooming on double-tap and pinch-zoom
+    var lastTouchEnd = 0;
+    document.addEventListener('touchstart', function(event) {
+        if (event.touches.length > 1) {
+            event.preventDefault();
+        }
+    }, { passive: false });
+
+    document.addEventListener('touchend', function(event) {
+        var now = new Date().getTime();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, { passive: false });
+
+    document.addEventListener('gesturestart', function(event) {
+        event.preventDefault();
+    });
+
+    document.addEventListener('gesturechange', function(event) {
+        event.preventDefault();
+    });
+
+    document.addEventListener('gestureend', function(event) {
+        event.preventDefault();
+    });
   };
   SkySphere.prototype.setRadius = function (radius) {
     this.zoom(radius / this.radius);
